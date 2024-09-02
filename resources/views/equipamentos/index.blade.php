@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container mt-5">
-        <h1 class="mb-4">Cadastro de Equipamentos</h1>
+        <h1 class="mb-4">Cadastroo de Equipamentos</h1>
 
         @if (session('success'))
             <div class="alert alert-success" role="alert">
