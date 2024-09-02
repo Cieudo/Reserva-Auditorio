@@ -20,22 +20,22 @@
                     </div>
 
                     <div class="form-group mb-3">
-                        <label for="campoEmail"><i class="fas fa-user"></i> Email:</label>
+                        <label for="campoEmail"><i class="fas fa-envelope"></i> E-mail:</label>
                         <input type="email" id="campoEmail" name="campoEmail" class="form-control" required>
                     </div>
                     
                     <div class="form-group mb-3">
-                        <label for="campoVinculo"><i class="fas fa-user"></i> Vínculo:</label>
+                        <label for="campoVinculo"><i class="fas fa-id-badge"></i> Vínculo:</label>
                         <input type="text" id="campoVinculo" name="campoVinculo" class="form-control" required>
                     </div>
 
                     <div class="form-group mb-3">
-                        <label for="campoMatricula"><i class="fas fa-user"></i> Matrícula:</label>
+                        <label for="campoMatricula"><i class="fas fa-id-card"></i> Matrícula:</label>
                         <input type="text" id="campoMatricula" name="campoMatricula" class="form-control" required>
                     </div>
 
                     <div class="form-group mb-3">
-                        <label for="campoCurso"><i class="fas fa-user"></i> Curso:</label>
+                        <label for="campoCurso"><i class="fas fa-graduation-cap"></i> Curso:</label>
                         <input type="text" id="campoCurso" name="campoCurso" class="form-control" required>
                     </div>
 

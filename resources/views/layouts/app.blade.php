@@ -79,7 +79,24 @@
                     <a class="nav-link" href="{{ route('usuarios.index') }}">Usuários</a>
                 </li>
             </ul>
-            <a href="{{ route('login') }}" class="btn btn-custom">Login</a>
+            @auth
+                <div class="dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ Auth::user()->nome_usuario }}
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </div>
+                </div>
+            @else
+                <a href="{{ route('login') }}" class="btn btn-custom">Login</a>
+            @endauth
         </div>
     </nav>
 
