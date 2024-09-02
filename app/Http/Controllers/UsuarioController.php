@@ -89,25 +89,4 @@ class UsuarioController extends Controller
         return redirect()->route('usuarios.index')->with('success', 'Usuário excluído com sucesso!');
     }
 
-    public function logar(Request $request){
-        $request->validate([
-            'email' => 'required',
-            'senha' => 'required'
-        ]);
-
-        $user = Usuario::where('email', $request->email)
-                ->orWhere('matricula', $request->email)
-                ->first();
-
-        if(!$user){
-            return redirect()->route("login")->withInput()->with("error", "Erro no login. Verifique os dados inseridos.");
-        }
-
-        if($request->senha == $user->senha){
-            Auth::login($user, true);
-            return redirect()->route('teste');
-        }
-
-        return redirect()->route("login")->withInput()->with("error", "Erro no login. Verifique os dados inseridos.");
-    }
 }
