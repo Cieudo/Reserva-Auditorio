@@ -8,6 +8,12 @@ use App\Models\Equipamento;
 
 class ReservaController extends Controller
 {
+
+    public function create()
+    {
+        // Retorne a view para o formulário de criação
+        return view('reservas.index');
+    }
     public function index()
     {
         $reservas = Reserva::with('equipamento')->get();
