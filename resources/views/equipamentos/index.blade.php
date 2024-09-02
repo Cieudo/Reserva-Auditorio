@@ -24,6 +24,7 @@
                         <input type="number" id="quantidade" name="quantidade" class="form-control" required>
                     </div>
                     
+                    
                     <div class="form-group mb-3">
                         <label for="descricao"><i class="fas fa-info-circle"></i> Descrição:</label>
                         <input type="text" id="descricao" name="descricao" class="form-control">
