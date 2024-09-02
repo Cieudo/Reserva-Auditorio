@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container mt-5">
-        <h1 class="mb-4">Cadastroo de Equipamentos</h1>
+        <h1 class="mb-4">Cadastro de Equipamentos</h1>
 
         @if (session('success'))
             <div class="alert alert-success" role="alert">
@@ -24,7 +24,7 @@
                         <input type="number" id="quantidade" name="quantidade" class="form-control" required>
                     </div>
                     
-                    
+
                     <div class="form-group mb-3">
                         <label for="descricao"><i class="fas fa-info-circle"></i> Descrição:</label>
                         <input type="text" id="descricao" name="descricao" class="form-control">

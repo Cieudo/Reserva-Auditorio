@@ -8,40 +8,67 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- Font Awesome para ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <!-- Adicione seus próprios estilos aqui -->
+    <!-- Estilos personalizados -->
     <style>
-        /* Seus estilos adicionais */
         body {
-            padding-top: 56px; /* Altura da navbar fixa */
+            padding-top: 60px; /* Ajuste para a altura da navbar */
         }
-        .content {
-            margin-top: 20px;
+        .navbar-custom {
+            background-color: #007bff; /* Cor azul da navbar */
+            border-bottom: 3px solid #0056b3; /* Borda inferior da navbar */
+        }
+        .navbar-custom .navbar-brand {
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        .navbar-custom .navbar-brand:hover {
+            color: #d9d9d9;
+        }
+        .navbar-custom .nav-link {
+            color: white;
+            padding-right: 20px;
+            font-weight: 500;
+        }
+        .navbar-custom .nav-link:hover {
+            color: #d9d9d9;
+            transition: color 0.3s ease-in-out;
+        }
+        .navbar-custom .btn-custom {
+            background-color: #0056b3;
+            color: white;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: background-color 0.3s ease-in-out;
+        }
+        .navbar-custom .btn-custom:hover {
+            background-color: #003f7f;
         }
         footer {
             background-color: #f8f9fa;
             padding: 10px 0;
+            margin-top: 20px;
         }
         footer p {
             margin-bottom: 0;
             color: #6c757d;
         }
-        .navbar-brand {
-            font-weight: bold;
-        }
-        .navbar-nav .nav-link {
-            padding-right: 20px;
+        .content {
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
-        <a class="navbar-brand" href="{{ route('home') }}">Sistema de Reservas</a>
+    <!-- Navbar personalizada -->
+    <nav class="navbar navbar-expand-md navbar-custom fixed-top">
+        <a class="navbar-brand" href="{{ route('home') }}">
+            <i class="fas fa-tools"></i> Sistema de Reservas
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('equipamentos.index') }}">Equipamentos</a>
                 </li>
@@ -52,6 +79,7 @@
                     <a class="nav-link" href="{{ route('usuarios.index') }}">Usuários</a>
                 </li>
             </ul>
+            <a href="{{ route('login') }}" class="btn btn-custom">Login</a>
         </div>
     </nav>
 
@@ -59,6 +87,11 @@
     <div class="container content">
         @yield('content')
     </div>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <p>&copy; 2024 Sistema de Reservas. Todos os direitos reservados.</p>
+    </footer>
 
     <!-- Scripts do Bootstrap -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
