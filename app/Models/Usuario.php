@@ -15,8 +15,13 @@ class Usuario extends Authenticatable
     public $timestamps = true; // created_at e updated_at
 
     protected $fillable = [
+        'id_usuario',
         'nome_usuario',
-        'senha',// Adicionando 'senha' aqui para garantir que o campo seja preenchido ao criar ou atualizar
+        'email',
+        'senha',
+        'curso',
+        'matricula',
+        'vinculo'
     ];
 
     protected $hidden = [

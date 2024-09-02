@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Illuminate\Http\Request;
 use App\Models\Usuario;
 
@@ -18,16 +19,38 @@ class UsuarioController extends Controller
         return view('usuarios.create'); // Carrega a view para criar um novo usuário
     }
 
+    function comparaSenhas($senha1, $senha2){
+        if ($senha1 == $senha2){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     public function store(Request $request)
     {
+
+        $s1 = $request->CampoSenha;
+        $s2 = $request->CampoConfirmSenha;
+        if (!$this->comparaSenhas($s1, $s2)){
+            return redirect()->route('usuarios.create')->withInput()->with("error", "Senhas diferentes. Verifique os dados inseridos.");
+        }
+
         $request->validate([
             'nome_usuario' => 'required|string|max:45',
-            'senha' => 'required|string|min:8', // Garantir que as senhas tenham um tamanho mínimo
+            'senha' => 'required|string|min:8', 
         ]);
 
-        $request['senha'] = bcrypt($request->senha); // Criptografando a senha
+        $register = new Usuario;
 
-        Usuario::create($request->only('nome_usuario', 'senha'));
+        $register->nome_usuario = $request->campoNome;
+        $register->email = $request->campoEmail;
+        $register->senha = $request->campoSenha;
+        $register->vinculo = $request->campoVinculo;
+        $register->matricula = $request->campoMatricula;
+        $register->curso = $request->campoCurso;
+
+        $register->save();
 
         return redirect()->route('usuarios.index')->with('success', 'Usuário cadastrado com sucesso!');
     }
@@ -64,5 +87,27 @@ class UsuarioController extends Controller
         $usuario->delete();
 
         return redirect()->route('usuarios.index')->with('success', 'Usuário excluído com sucesso!');
+    }
+
+    public function logar(Request $request){
+        $request->validate([
+            'email' => 'required',
+            'senha' => 'required'
+        ]);
+
+        $user = Usuario::where('email', $request->email)
+                ->orWhere('matricula', $request->email)
+                ->first();
+
+        if(!$user){
+            return redirect()->route("login")->withInput()->with("error", "Erro no login. Verifique os dados inseridos.");
+        }
+
+        if($request->senha == $user->senha){
+            Auth::login($user, true);
+            return redirect()->route('teste');
+        }
+
+        return redirect()->route("login")->withInput()->with("error", "Erro no login. Verifique os dados inseridos.");
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,18 +15,38 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        $credentials = $request->only('nome_usuario', 'senha');
+        // $credentials = $request->only('nome_usuario', 'senha');
 
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
+        // if (Auth::attempt($credentials)) {
+        //     $request->session()->regenerate();
             
-            return redirect()->intended('home')
-                             ->with('success', 'Login realizado com sucesso!');
+        //     return redirect()->intended('home')
+        //                      ->with('success', 'Login realizado com sucesso!');
+        // }
+
+        // return back()->withErrors([
+        //     'nome_usuario' => 'As credenciais fornecidas não coincidem com nossos registros.',
+        // ]);
+
+        $request->validate([
+            'email' => 'required',
+            'senha' => 'required'
+        ]);
+
+        $user = Usuario::where('email', $request->email)
+                ->orWhere('matricula', $request->email)
+                ->first();
+
+        if(!$user){
+            return redirect()->route("login")->withInput()->with("error", "Erro no login. Verifique os dados inseridos.");
         }
 
-        return back()->withErrors([
-            'nome_usuario' => 'As credenciais fornecidas não coincidem com nossos registros.',
-        ]);
+        if($request->senha == $user->senha){
+            Auth::login($user, true);
+            return redirect()->route('home');
+        }
+
+        return redirect()->route("login")->withInput()->with("error", "Erro no login. Verifique os dados inseridos.");
     }
 
     public function logout(Request $request)

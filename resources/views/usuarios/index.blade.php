@@ -15,13 +15,38 @@
                 <form action="{{ route('usuarios.store') }}" method="POST">
                     @csrf
                     <div class="form-group mb-3">
-                        <label for="nome_usuario"><i class="fas fa-user"></i> Nome:</label>
-                        <input type="text" id="nome_usuario" name="nome_usuario" class="form-control" required>
+                        <label for="campoNome"><i class="fas fa-user"></i> Nome:</label>
+                        <input type="text" id="campoNome" name="campoNome" class="form-control" required>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="campoEmail"><i class="fas fa-user"></i> Email:</label>
+                        <input type="email" id="campoEmail" name="campoEmail" class="form-control" required>
                     </div>
                     
                     <div class="form-group mb-3">
-                        <label for="senha"><i class="fas fa-lock"></i> Senha:</label>
-                        <input type="password" id="senha" name="senha" class="form-control" required>
+                        <label for="campoVinculo"><i class="fas fa-user"></i> Vínculo:</label>
+                        <input type="text" id="campoVinculo" name="campoVinculo" class="form-control" required>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="campoMatricula"><i class="fas fa-user"></i> Matrícula:</label>
+                        <input type="text" id="campoMatricula" name="campoMatricula" class="form-control" required>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="campoCurso"><i class="fas fa-user"></i> Curso:</label>
+                        <input type="text" id="campoCurso" name="campoCurso" class="form-control" required>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="campoSenha"><i class="fas fa-lock"></i> Senha:</label>
+                        <input type="password" id="campoSenha" name="campoSenha" class="form-control" required>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="CampoConfirmSenha"><i class="fas fa-lock"></i> Confirmar Senha:</label>
+                        <input type="password" id="CampoConfirmSenha" name="CampoConfirmSenha" class="form-control" required>
                     </div>
                     
                     <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Cadastrar Usuário</button>
