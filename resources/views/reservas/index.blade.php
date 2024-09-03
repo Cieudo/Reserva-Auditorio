@@ -17,21 +17,21 @@
                     <div class="form-group mb-3">
                         <label for="id_equipamentos"><i class="fas fa-cogs"></i> Equipamento:</label>
                         <select id="id_equipamentos" name="id_equipamentos" class="form-control" required>
+                            <option value="">Selecione o Equipamento</option>
                             @foreach ($equipamentos as $equipamento)
-                            <option value="vinculo">Selecione o Equipamento</option>
-                            <option value="{{ $equipamento->id }}">{{ $equipamento->nome }}</option>
+                                <option value="{{ $equipamento->id }}">{{ $equipamento->nome }}</option>
                             @endforeach
                         </select>
                     </div>
                     
-                    <div class="form-group mb-3">
+                    {{-- <div class="form-group mb-3">
                         <label for="vinculo"><i class="fas fa-user-tag"></i> Vínculo:</label>
                         <select id="vinculo" name="vinculo" class="form-control" required>
                             <option value="vinculo">Selecione o Vinculo</option>
                             <option value="aluno">Aluno</option>
                             <option value="professor">Professor</option>
                         </select>
-                    </div>
+                    </div> --}}
                     
                     <div class="form-group mb-3">
                         <label for="data_inicio"><i class="fas fa-calendar-day"></i> Data de Início:</label>
@@ -48,6 +48,11 @@
                         <input type="text" id="local" name="local" class="form-control" required>
                     </div>
                     
+                    <div class="form-group mb-3">
+                        <label for="quantidade"><i class="fas fa-plus"></i> Quantidade:</label>
+                        <input type="number" id="quantidade" name="quantidade" class="form-control" required>
+                    </div>
+
                     <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Fazer Reserva</button>
                 </form>
             </div>

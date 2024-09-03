@@ -32,14 +32,14 @@ class UsuarioController extends Controller
 
         $s1 = $request->CampoSenha;
         $s2 = $request->CampoConfirmSenha;
-        // if (!$this->comparaSenhas($s1, $s2)){
-        //     return redirect()->route('usuarios.index')->withInput()->with("error", "Senhas diferentes. Verifique os dados inseridos.");
-        // }
+        if (!$this->comparaSenhas($s1, $s2)){
+            return redirect()->route('usuarios.index')->withInput()->with("error", "Senhas diferentes. Verifique os dados inseridos.");
+        }
 
-        // $request->validate([
-        //     'nome_usuario' => 'required|string|max:45',
-        //     'senha' => 'required|string|min:8', 
-        // ]);
+        $request->validate([
+            'nome_usuario' => 'required|string|max:45',
+            'senha' => 'required|string|min:8', 
+        ]);
 
         $register = new Usuario;
 

@@ -23,49 +23,58 @@ class ReservaController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'id_equipamentos' => 'required|exists:equipamentos,id_equipamentos',
-            'user_id' => 'required|exists:usuario,id_usuario', // Corrigido
-            'data_inicio' => 'required|date',
-            'data_fim' => 'required|date|after_or_equal:data_inicio',
-            'local' => 'required|string|max:45',
-            'quantidade' => 'required|integer',
-        ]);
+        // $request->validate([
+        //     'id_equipamentos' => 'required|exists:equipamentos,id_equipamentos',
+        //     'data_inicio' => 'required|date',
+        //     'data_fim' => 'required|date|after_or_equal:data_inicio',
+        //     'local' => 'required|string|max:45',
+        //     'quantidade' => 'required|integer',
+        // ]);
+
+
+        $register = new Reserva;
+
+        $register->id_equipamentos = $request->id_equipamentos;
+        $register->data_inicio = $request->data_inicio;
+        $register->data_fim = $request->data_fim;
+        $register->local = $request->local;
+        $register->quantidade = $request->quantidade;
     
-        Reserva::create($request->all());
+        $register->save();
+
+        // Reserva::create($request->all());
     
         return redirect()->route('reservas.index')->with('success', 'Reserva realizada com sucesso!');
     }
 
     public function edit($id)
-{
-    $reserva = Reserva::findOrFail($id);
-    return view('reservas.edit', compact('reserva'));
-}
+    {
+        $reserva = Reserva::findOrFail($id);
+        return view('reservas.edit', compact('reserva'));
+    }
 
-public function update(Request $request, $id)
-{
-    $request->validate([
-        'id_equipamentos' => 'required|integer',
-        'vinculo' => 'required|in:aluno,professor',
-        'data_inicio' => 'required|date',
-        'data_fim' => 'required|date',
-        'local' => 'required|string|max:45',
-        'quantidade' => 'required|integer',
-    ]);
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'id_equipamentos' => 'required|integer',
+            'data_inicio' => 'required|date',
+            'data_fim' => 'required|date',
+            'local' => 'required|string|max:45',
+            'quantidade' => 'required|integer',
+        ]);
 
-    $reserva = Reserva::findOrFail($id);
-    $reserva->update($request->all());
+        $reserva = Reserva::findOrFail($id);
+        $reserva->update($request->all());
 
-    return redirect()->route('reservas.index')->with('success', 'Reserva atualizada com sucesso!');
-}
+        return redirect()->route('reservas.index')->with('success', 'Reserva atualizada com sucesso!');
+    }
 
-public function destroy($id)
-{
-    $reserva = Reserva::findOrFail($id);
-    $reserva->delete();
+    public function destroy($id)
+    {
+        $reserva = Reserva::findOrFail($id);
+        $reserva->delete();
 
-    return redirect()->route('reservas.index')->with('success', 'Reserva excluída com sucesso!');
-}
+        return redirect()->route('reservas.index')->with('success', 'Reserva excluída com sucesso!');
+    }
 
 }
