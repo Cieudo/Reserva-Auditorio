@@ -24,6 +24,7 @@ class AuthController extends Controller
 
         $user = Usuario::where('email', $request->email)
                 ->orWhere('matricula', $request->email)
+                ->orWhere('nome_usuario', $request->email)
                 ->first();
 
         if(!$user){

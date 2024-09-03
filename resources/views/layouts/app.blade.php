@@ -85,6 +85,9 @@
                         {{ Auth::user()->nome_usuario }}
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="{{ route('usuarios.edit', Auth::user()->id_usuario) }}">
+                            <i class="fas fa-user-edit"></i> Editar Perfil
+                        </a>
                         <a class="dropdown-item" href="{{ route('logout') }}"
                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             <i class="fas fa-sign-out-alt"></i> Logout
