@@ -15,7 +15,7 @@
                 <form action="{{ route('equipamentos.store') }}" method="POST">
                     @csrf
                     <div class="form-group mb-3">
-                        <label for="nome"><i class="fas fa-cogs"></i> Nome:</label>
+                        <label for="nome"><i class="fas fa-tag"></i> Nome:</label>
                         <input type="text" id="nome" name="nome" class="form-control" required>
                     </div>
                     

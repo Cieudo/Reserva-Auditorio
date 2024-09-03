@@ -25,7 +25,7 @@
                 <form action="{{ route('login') }}" method="POST">
                     @csrf
                     <div class="form-group mb-3">
-                        <label for="email"><i class="fas fa-user"></i> Nome de Usuário:</label>
+                        <label for="email"><i class="fas fa-user"></i> Nome de Usuário / Matricula :</label>
                         <input type="text" id="email" name="email" class="form-control" required>
                     </div>
 
