@@ -54,6 +54,6 @@ class AuthController extends Controller
     {
         Session::flush();
         Auth::logout();
-        return redirect()->intended(route('login'));
+        return redirect()->intended(route('home'));
     }
 }
