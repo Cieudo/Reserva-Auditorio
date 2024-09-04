@@ -19,19 +19,10 @@
                         <select id="id_equipamentos" name="id_equipamentos" class="form-control" required>
                             <option value="">Selecione o Equipamento</option>
                             @foreach ($equipamentos as $equipamento)
-                                <option value="{{ $equipamento->id }}">{{ $equipamento->nome }}</option>
+                                <option value="{{ $equipamento->id_equipamentos }}">{{ $equipamento->nome }}</option>
                             @endforeach
                         </select>
                     </div>
-                    
-                    {{-- <div class="form-group mb-3">
-                        <label for="vinculo"><i class="fas fa-user-tag"></i> Vínculo:</label>
-                        <select id="vinculo" name="vinculo" class="form-control" required>
-                            <option value="vinculo">Selecione o Vinculo</option>
-                            <option value="aluno">Aluno</option>
-                            <option value="professor">Professor</option>
-                        </select>
-                    </div> --}}
                     
                     <div class="form-group mb-3">
                         <label for="data_inicio"><i class="fas fa-calendar-day"></i> Data de Início:</label>

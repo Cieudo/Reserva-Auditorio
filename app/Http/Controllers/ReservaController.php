@@ -23,22 +23,22 @@ class ReservaController extends Controller
 
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'id_equipamentos' => 'required|exists:equipamentos,id_equipamentos',
-        //     'data_inicio' => 'required|date',
-        //     'data_fim' => 'required|date|after_or_equal:data_inicio',
-        //     'local' => 'required|string|max:45',
-        //     'quantidade' => 'required|integer',
-        // ]);
-
-
+        // Validar se o id_equipamentos está presente e não é vazio
+        $request->validate([
+            'id_equipamentos' => 'required|integer',
+            'data_inicio' => 'required|date',
+            'data_fim' => 'required|date|after_or_equal:data_inicio',
+            'local' => 'required|string',
+            'quantidade' => 'required|integer|min:1',
+        ]);
+    
         $register = new Reserva;
-
         $register->id_equipamentos = $request->id_equipamentos;
         $register->data_inicio = $request->data_inicio;
         $register->data_fim = $request->data_fim;
         $register->local = $request->local;
         $register->quantidade = $request->quantidade;
+        $register->user_id = auth()->id();
     
         $register->save();
 
