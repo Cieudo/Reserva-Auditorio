@@ -7,7 +7,7 @@
                 <h4 class="mb-0"><i class="fas fa-user-edit"></i> Editar Usuário</h4>
             </div>
             <div class="card-body">
-                <form action="{{ route('usuarios.update', $usuario->id_usuario) }}" method="POST">
+                <form action="{{ route('usuarios.update', $usuario->id_usuario) }}" method="GET">
                     @csrf
                     @method('PUT')
 
@@ -22,9 +22,13 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="vinculo"><i class="fas fa-link"></i> Vínculo:</label>
-                        <input type="text" class="form-control" id="vinculo" name="vinculo" value="{{ $usuario->vinculo }}" required>
-                    </div>
+                      <label for="campoVinculo"><i class="fas fa-id-badge"></i> Vínculo:</label>
+                      <select name="campoVinculo" id="campoVinculo"  class="form-control" required>
+                          <option value="" disabled selected>Escolha</option>
+                          <option value="professor">Professor</option>
+                          <option value="aluno">Aluno</option>
+                      </select>
+                  </div>
 
                     <div class="form-group">
                         <label for="matricula"><i class="fas fa-id-card"></i> Matrícula:</label>
