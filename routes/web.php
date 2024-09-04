@@ -17,11 +17,8 @@ Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-// Rotas para Equipamentos
-
-
-// Rotas para Reservas
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth'])->group(function () {  
+    // Rotas para Equipamentos
     Route::get('/equipamentos', [EquipamentoController::class, 'index'])->name('equipamentos.index');
     Route::get('/equipamentos/create', [EquipamentoController::class, 'create'])->name('equipamentos.create');
     Route::post('/equipamentos', [EquipamentoController::class, 'store'])->name('equipamentos.store');
@@ -29,6 +26,7 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/equipamentos/{id}', [EquipamentoController::class, 'update'])->name('equipamentos.update');
     Route::delete('/equipamentos/{id}', [EquipamentoController::class, 'destroy'])->name('equipamentos.destroy');
     
+    // Rotas para Reservas
     Route::get('/reservas', [ReservaController::class, 'index'])->name('reservas.index');
     Route::get('/reservas/create', [ReservaController::class, 'create'])->name('reservas.create');
     Route::post('/reservas', [ReservaController::class, 'store'])->name('reservas.store');

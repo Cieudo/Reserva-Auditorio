@@ -65,7 +65,7 @@
             </div>
         </div>
 
-        <h2 class="mt-5">Lista de Usuários</h2>
+        {{-- <h2 class="mt-5">Lista de Usuários</h2>
         <ul class="list-group">
             @foreach ($usuarios as $usuario)
                 <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -86,6 +86,6 @@
                     </div>
                 </li>
             @endforeach
-        </ul>
+        </ul> --}}
     </div>
 @endsection
